@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
 using System.ComponentModel.DataAnnotations;
 
 namespace AnimalShelter.Models
@@ -16,20 +14,17 @@ namespace AnimalShelter.Models
 
     public string Breed { get; set; }
     public DateTime AdmitDate { get; set; }
-    public bool SpecialNeeds { get; set; }
+    // public bool SpecialNeeds { get; set; }
 
-    private static List<Animal> _inventory = new List<Animal> { };
 
-    public Animal(string name, string type, char sex, int age, string breed, DateTime admitDate, bool specialNeeds)
-    {
-      Name = name;
-      Sex = sex;
-      Age = age;
-      Breed = breed;
-      AdmitDate = admitDate;
-      SpecialNeeds = specialNeeds;
-      _inventory.Add(this);
-      AnimalId = _inventory.Count;
-    }
+    // public Animal(string name, string type, char sex, int age, string breed, DateTime admitDate, bool specialNeeds)
+    // {
+    //   Name = name;
+    //   Sex = sex;
+    //   Age = age;
+    //   Breed = breed;
+    //   AdmitDate = admitDate;
+    //   SpecialNeeds = specialNeeds;
+    // }
   }
 }

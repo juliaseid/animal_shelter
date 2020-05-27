@@ -33,9 +33,9 @@
         @Html.DisplayFor(modelAnimal => animal.AdmitDate)
     </td>
     <td>
-        @* @Html.ActionLink("Edit", "Edit", new { id=animal.ID }) |
-        @Html.ActionLink("Details", "Details", new { id=animal.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id=animal.ID }) *@
+        @Html.ActionLink("Details", "Details", new { id=animal.AnimalId }) |
+        @Html.ActionLink("Edit", "Edit", new { id=animal.AnimalId }) |
+        @Html.ActionLink("Delete Item", "Delete", new { id = animal.AnimalId })
     </td>
   </tr>
 }

@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using AnimalShelter.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace AnimalShelter.Controllers
 {
@@ -16,14 +18,11 @@ namespace AnimalShelter.Controllers
 
     public ActionResult Index()
     {
-      // List<Animal> animals = from a in _db.Animals 
-      // select a;
+      List<Animal> allAnimals = _db.Animals.ToList();
 
-      // animals = animals.OrderByDescending(a => a.AdmitDate);
+      allAnimals = allAnimals.OrderBy(a => a.AdmitDate).ToList();
 
-      List<Animal> model = _db.Animals.ToList();
-
-      return View(model);
+      return View(allAnimals);
     }
 
     // public ViewResult Index()
@@ -31,7 +30,7 @@ namespace AnimalShelter.Controllers
     // return View(_db.Animals.ToList());
     // }
 
-    public ActionResult New()
+    public ActionResult Create()
     {
       return View();
     }
@@ -39,22 +38,44 @@ namespace AnimalShelter.Controllers
     [HttpPost]
     public ActionResult Create(Animal animal)
     {
-      if (ModelState.IsValid)
-      {
-        _db.Animals.Add(animal);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
-      }
-      else
-      {
-        return View(animal);
-      }
+      _db.Animals.Add(animal);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
       Animal thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
       return View(thisAnimal);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      Animal thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
+      return View(thisAnimal);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Animal animal)
+    {
+      _db.Entry(animal).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
+      return View(thisAnimal);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
+      _db.Animals.Remove(thisAnimal);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

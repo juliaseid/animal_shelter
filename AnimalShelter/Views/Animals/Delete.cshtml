@@ -2,10 +2,10 @@
   Layout = "_Layout";
 }
 
-@model AnimalShelter.Models.Animal // model directive
+@model AnimalShelter.Models.Animal
 
-<h2>Animal Details:</h2> 
-<hr />
+<h2>Are you sure you want to delete this?</h2>
+
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
 <h3>@Html.DisplayNameFor(model => model.Breed): @Html.DisplayFor(model => model.Breed)</h3>
@@ -13,7 +13,9 @@
 <h3>@Html.DisplayNameFor(model => model.Age): @Html.DisplayFor(model => model.Age)</h3>
 @* <h3>@Html.DisplayNameFor(model => model.SpecialNeeds): @Html.DisplayFor(model => model.SpecialNeeds)</h3> *@
 <h3>@Html.DisplayNameFor(model => model.AdmitDate): @Html.DisplayFor(model => model.AdmitDate)</h3>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
 <br>
-<p>@Html.ActionLink("Edit", "Edit", new { id = Model.AnimalId}) </p>
-<p>@Html.ActionLink("Delete Entry", "Delete", new { id = Model.AnimalId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+@Html.ActionLink("Back to List", "Index")

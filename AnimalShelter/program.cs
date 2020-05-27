@@ -1,7 +1,5 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-using AnimalShelter.Models;
-
 
 namespace AnimalShelter
 {
@@ -15,8 +13,8 @@ namespace AnimalShelter
         .UseIISIntegration()
         .UseStartup<Startup>()
         .Build();
-      
+
       host.Run();
     }
   }
-}     
+}
