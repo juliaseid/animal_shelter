@@ -9,60 +9,22 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.AnimalId);
-    @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)
-    <input type="submit" value="Update"/>
+  @Html.HiddenFor(model => model.AnimalId);
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  @Html.LabelFor(model => model.Type)
+  @Html.TextBoxFor(model => model.Type)
+  @Html.LabelFor(model => model.Breed)
+  @Html.TextBoxFor(model => model.Breed)
+  @Html.LabelFor(model => model.Sex)
+  @Html.TextBoxFor(model => model.Sex)
+  @Html.LabelFor(model => model.Age)
+  @Html.TextBoxFor(model => model.Age)
+  @Html.HiddenFor(model => model.AnimalId);
+  @Html.LabelFor(model => model.AdmitDate)
+  @Html.TextBoxFor(model => model.AdmitDate, "{0:yyyy-MM-dd}", new { type="date" })
+  <br>
+  <input type="submit" value="Update" form = "editForm"/>
 }
 
-<br>
-<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.AnimalId);
-    @Html.LabelFor(model => model.Type)
-    @Html.TextBoxFor(model => model.Type)
-    <input type="submit" value="Update"/>
-}
-
-<br>
-<h3>@Html.DisplayNameFor(model => model.Breed): @Html.DisplayFor(model => model.Breed)</h3>
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.AnimalId);
-    @Html.LabelFor(model => model.Breed)
-    @Html.TextBoxFor(model => model.Breed)
-    <input type="submit" value="Update"/>
-}
-
-<br>
-<h3>@Html.DisplayNameFor(model => model.Sex): @Html.DisplayFor(model => model.Sex)</h3>
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.AnimalId);
-    @Html.LabelFor(model => model.Sex)
-    @Html.TextBoxFor(model => model.Sex)
-    <input type="submit" value="Update"/>
-}
-
-<br>
-<h3>@Html.DisplayNameFor(model => model.Age): @Html.DisplayFor(model => model.Age)</h3>
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.AnimalId);
-    @Html.LabelFor(model => model.Age)
-    @Html.TextBoxFor(model => model.Age)
-    <input type="submit" value="Update"/>
-}
-
-<br>
-<h3>@Html.DisplayNameFor(model => model.AdmitDate): @Html.DisplayFor(model => model.AdmitDate)</h3>
-@using (Html.BeginForm("Edit", "AnimalsController", new{}))
-{
-    @Html.HiddenFor(model => model.AnimalId);
-    @Html.LabelFor(model => model.AdmitDate)
-    @Html.TextBoxFor(model => model.AdmitDate, "{0:yyyy-MM-dd}", new { type="date" })
-
-}
-
-    <input type="submit" value="Update" form = "editForm"/>
+    
